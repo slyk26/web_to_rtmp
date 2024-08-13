@@ -42,9 +42,10 @@ RUN apt-get -y install pulseaudio pulseaudio-utils --fix-missing
 RUN adduser root pulse-access
 RUN adduser root pulse
 
-# install chrome
-RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN apt-get install -y ./google-chrome-stable_current_amd64.deb
+# install chrome - ARM without snap
+RUN apt install -y software-properties-common
+RUN add-apt-repository ppa:xtradeb/apps -y
+RUN apt install -y chromium
 
 # install chromedriver
 # NOTE: this is a relatively old version.  Try a newer version if this does not work.
